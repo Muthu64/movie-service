@@ -30,7 +30,7 @@ public class MovieInfoResource
     @RequestMapping( "/{movieId}" )
     public Movie getMovieInformation( @PathVariable( "movieId" ) String movieId )
     {
-        LOGGER.info( "movie info received movie id: {}", movieId );
+        LOGGER.info( "movie info received movie id : {}", movieId );
 
         Movie movie = this.movieDbFeignClient.getMovieInformation( movieId, apiKey );
 
