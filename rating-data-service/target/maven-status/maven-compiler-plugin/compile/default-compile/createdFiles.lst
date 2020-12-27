@@ -1,0 +1,4 @@
+com\rating\model\UserRating.class
+com\rating\model\Rating.class
+com\rating\endpoint\RatingDataResource.class
+com\rating\RatingDataServiceApplication.class

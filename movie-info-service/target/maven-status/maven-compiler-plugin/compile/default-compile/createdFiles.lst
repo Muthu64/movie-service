@@ -1,0 +1,4 @@
+com\movie\info\model\Movie.class
+com\movie\info\MovieInfoServiceApplication.class
+com\movie\info\proxy\MovieDbFeignClient.class
+com\movie\info\endpoint\MovieInfoResource.class
