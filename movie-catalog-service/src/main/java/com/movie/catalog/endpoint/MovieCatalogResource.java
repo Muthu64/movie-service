@@ -57,7 +57,7 @@ public class MovieCatalogResource
     @ApiOperation( value = "Get catalog movie list with description" )
     public List<CatalogItem> getCatalog( @PathVariable( "userId" ) String userId ) throws Exception
     {
-        LOGGER.info( "user Id passed : {}", userId );
+        LOGGER.info( "user Id passed in to the service : {}", userId );
         //get all rated movie ids
         //for each movie Id call movie service to get the information
         UserRating userRating = this.getUserRating( userId, ClientType.REST_TEMPLATE );
