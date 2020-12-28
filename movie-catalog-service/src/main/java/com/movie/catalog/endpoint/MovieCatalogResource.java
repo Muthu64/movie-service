@@ -58,6 +58,10 @@ public class MovieCatalogResource
     public List<CatalogItem> getCatalog( @PathVariable( "userId" ) String userId ) throws Exception
     {
         LOGGER.info( "user Id passed in to the service : {}", userId );
+
+        //Added this to test hystrix fallback in cloud gateway service
+        //Thread.sleep(100000);
+
         //get all rated movie ids
         //for each movie Id call movie service to get the information
         UserRating userRating = this.getUserRating( userId, ClientType.REST_TEMPLATE );
