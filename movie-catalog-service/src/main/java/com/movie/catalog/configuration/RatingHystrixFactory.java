@@ -22,7 +22,17 @@ public class RatingHystrixFactory
 
     private HystrixCommand.Setter setter;
 
-    public RatingHystrixFactory( String hystrixGGroupKey, String hystrixCommandKey, String hystrixThreadPoolKey, Integer coreSize, Integer maxQueueSize, Integer queueSizeRejectionThreshold, Integer executionTimeoutInMilliseconds, Integer circuitBreakerRequestVolumeThreshold, Integer circuitBreakerSleepWindowInMilliseconds, Integer circuitBreakerErrorThresholdPercentage, Integer metricsRollingStatsTimeInMillisecond )
+    public RatingHystrixFactory( String hystrixGGroupKey,
+                                 String hystrixCommandKey,
+                                 String hystrixThreadPoolKey,
+                                 Integer coreSize,
+                                 Integer maxQueueSize,
+                                 Integer queueSizeRejectionThreshold,
+                                 Integer executionTimeoutInMilliseconds,
+                                 Integer circuitBreakerRequestVolumeThreshold,
+                                 Integer circuitBreakerSleepWindowInMilliseconds,
+                                 Integer circuitBreakerErrorThresholdPercentage,
+                                 Integer metricsRollingStatsTimeInMillisecond )
     {
         this.setter = HystrixPropertiesSetter.INSTANCE.newSetter( hystrixGGroupKey, hystrixCommandKey, hystrixThreadPoolKey, coreSize, maxQueueSize, queueSizeRejectionThreshold, executionTimeoutInMilliseconds, circuitBreakerRequestVolumeThreshold, circuitBreakerSleepWindowInMilliseconds, circuitBreakerErrorThresholdPercentage, metricsRollingStatsTimeInMillisecond );
     }

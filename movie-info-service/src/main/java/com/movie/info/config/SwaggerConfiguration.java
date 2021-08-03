@@ -1,4 +1,5 @@
 package com.movie.info.config;
+/*
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
@@ -10,12 +11,13 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+*/
 
-@Configuration
-@EnableSwagger2
+//@Configuration
+//@EnableSwagger2
 public class SwaggerConfiguration
 {
-    @Bean
+   /* @Bean
     public Docket postsApi() {
         return new Docket( DocumentationType.SWAGGER_2).groupName("Movie info service").apiInfo(apiInfo()).select()
                 .paths(regex("/catalog.*")).build();
@@ -28,5 +30,5 @@ public class SwaggerConfiguration
                 //.license("Java_Gyan_Mantra License")
                 //.licenseUrl("https://www.youtube.com/channel/UCORuRdpN2QTCKnsuEaeK-kQ").version("1.0")
                 .build();
-    }
+    }*/
 }

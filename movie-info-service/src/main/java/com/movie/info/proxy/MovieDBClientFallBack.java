@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.movie.info.model.Movie;
 
 @Component
-    public class MovieDBClientFallBack implements MovieDbFeignClient
+public class MovieDBClientFallBack implements MovieDbFeignClient
 {
     @Override
     public Movie getMovieInformation( String movieId, String apiKey )

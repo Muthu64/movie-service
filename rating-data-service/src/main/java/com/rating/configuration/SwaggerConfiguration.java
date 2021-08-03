@@ -1,6 +1,7 @@
+/*
 package com.rating.configuration;
 
-import static springfox.documentation.builders.PathSelectors.regex;
+import static springfox.documentation.buildersmvn.PathSelectors.regex;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,3 +31,4 @@ public class SwaggerConfiguration
                 .build();
     }
 }
+*/

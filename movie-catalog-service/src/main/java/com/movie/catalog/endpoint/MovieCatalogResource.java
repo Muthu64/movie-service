@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.a3badran.platform.logging.LogRequest;
+import org.apache.cxf.annotations.Logging;
+import org.jboss.logging.LoggingClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.movie.catalog.catalog_exception.MovieCatalogErrorCode;
+import com.movie.catalog.catalog_exception.MovieCatalogException;
+import com.movie.catalog.catalog_exception.MovieCatalogExceptionBuilder;
 import com.movie.catalog.configuration.RatingHystrixFactory;
 import com.movie.catalog.model.CatalogItem;
 import com.movie.catalog.model.ClientType;
@@ -24,11 +30,12 @@ import com.movie.catalog.model.Movie;
 import com.movie.catalog.model.MovieMessage;
 import com.movie.catalog.model.UserRating;
 
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping( "/catalog" )
 @RefreshScope
+@Logging
 public class MovieCatalogResource
 {
     private static final Logger LOGGER = LoggerFactory.getLogger( MovieCatalogResource.class );
@@ -54,7 +61,8 @@ public class MovieCatalogResource
 
     @RequestMapping( value = "/{userId}", method = RequestMethod.GET )
     //@HystrixCommand(fallbackMethod = "getFallBack")
-    @ApiOperation( value = "Get catalog movie list with description" )
+    //@ApiOperation( value = "Get catalog movie list with description" )
+    @LogRequest("getcatalog")
     public List<CatalogItem> getCatalog( @PathVariable( "userId" ) String userId ) throws Exception
     {
         LOGGER.info( "user Id passed in to the service : {}", userId );
@@ -112,7 +120,14 @@ public class MovieCatalogResource
             }
             default:
             {
-                throw new Exception( "invalid client type" );
+                MovieCatalogErrorPayload movieCatalogErrorPayload = new MovieCatalogErrorPayload( "Testing payload" );
+                MovieCatalogException movieCatalogException = new MovieCatalogExceptionBuilder()
+                        .setMovieCatalogErrorCode( MovieCatalogErrorCode.BAD_REQUEST )
+                        .addContextKey( MovieCatalogErrorCode.CatalogContextKey.CLIENT_TYPE, "Invalid client type" )
+                        .setPayload( movieCatalogErrorPayload )
+                        .build();
+
+                throw movieCatalogException;
             }
         }
         return userRating;

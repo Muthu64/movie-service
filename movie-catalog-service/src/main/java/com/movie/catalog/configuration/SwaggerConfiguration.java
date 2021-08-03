@@ -1,3 +1,4 @@
+/*
 package com.movie.catalog.configuration;
 
 import static springfox.documentation.builders.PathSelectors.regex;
@@ -30,3 +31,4 @@ public class SwaggerConfiguration
                 .build();
     }
 }
+*/
